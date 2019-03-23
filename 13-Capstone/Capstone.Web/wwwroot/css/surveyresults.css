@@ -1,0 +1,37 @@
+﻿body {
+    
+
+
+                  }
+}
+
+.top-ranked-parks {
+display: flex;
+flex-direction: row;
+}
+
+.parks {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding: 20px;
+}
+
+.park-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-top: 50px;
+}
+
+.total-votes {
+    padding-top: 7px;
+}
+
+.park-image {
+    width: 250px;
+}
+
+.park-name {
+    font-size: 20px;
+}

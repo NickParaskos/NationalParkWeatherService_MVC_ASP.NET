@@ -1,0 +1,64 @@
+﻿@model Capstone.Web.Models.Survey_Result
+
+    <link href="/css/survey.css" rel="stylesheet">
+
+    @{
+        ViewData["Title"] = "Survey";
+        List<SelectListItem> parks = ViewBag.ParkSelectList as List<SelectListItem>;
+    }
+
+    <h2>Welcome to our survey!</h2>
+
+    <p>Below you will find our survey. You get to vote for your favorite National Park! Upon completing this survey you will then get to view the top ranked National Park from your fellow NPG colleagues!</p>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Survey">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ParkCode" class="control-label">Favorite National Park</label>
+                    <select asp-for="ParkCode" asp-items="@parks" class="form-control"></select>
+                    <span asp-validation-for="ParkCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label">Your email</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="State" class="control-label">State of residence ex: OH</label>
+                    <input asp-for="State" class="form-control" />
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ActivityLevel" class="control-label">How would you describe your activity level?</label><br>
+                    <div class="radio-button">
+                        <input asp-for="ActivityLevel" type="radio" value="inactive" /> inactive
+                    </div>
+                    <div class="radio-button">
+                        <input asp-for="ActivityLevel" type="radio" value="sedentary" /> sedentary
+                    </div>
+                    <div class="radio-button">
+                        <input asp-for="ActivityLevel" type="radio" value="active" /> active
+                    </div>
+                    <div class="radio-button">
+                        <input asp-for="ActivityLevel" type="radio" value="extremely active" /> extremely active
+                    </div>
+                    <span asp-validation-for="ActivityLevel" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

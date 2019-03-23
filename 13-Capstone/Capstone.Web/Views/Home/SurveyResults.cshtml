@@ -1,0 +1,35 @@
+﻿@model List<SurveyResultViewModel>
+
+<link href="/css/surveyresults.css" rel="stylesheet">
+
+@{
+    ViewData["Title"] = "SurveyResults";
+}
+
+<h4>Thank you for completing the survey!</h4>
+
+<h2>Top Park Rankings</h2>
+
+<p>Below you will find the top voted National Park! Feel free to click on the picture to get more details on the National Park.</p>
+<div class="top-ranked-parks">
+    @{
+        foreach (SurveyResultViewModel item in Model)
+        {
+            <div class="parks">
+                <div class="park-picture">
+                    <a asp-action="Details" asp-route-data="@item.ParkCode"><img src="~/images/parks/@(item.ParkCode).jpg" class="park-image" /></a>
+                </div>
+                <div class="park-info">
+                    <div class="park-name">
+
+                        <p>@item.ParkName</p>
+
+                    </div>
+                    <div class="total-votes">
+                        <p><strong>Total Votes: @item.VoteCount</strong></p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
